@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# --- Session State ---
+# Session State
 if "session_id" not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
@@ -24,7 +24,7 @@ if "analyzed_urls" not in st.session_state:
     st.session_state.analyzed_urls = []
 
 
-# --- Helper Functions ---
+# Helper Functions
 def analyze_url(url, session_id):
     response = requests.post(
         f"{API_URL}/analyze",
@@ -50,12 +50,12 @@ def get_analyzed_urls(session_id):
     return []
 
 
-# --- Header ---
+# Header
 st.title("🌐 Website Analyst Chatbot")
 st.caption("Paste any website URL and have a conversation about its content")
 st.divider()
 
-# --- Sidebar ---
+# Sidebar
 with st.sidebar:
     st.header("⚙️ Settings")
 
@@ -133,7 +133,7 @@ with st.sidebar:
         st.rerun()
 
 
-# --- Main Chat Area ---
+# Main Chat Area
 col1, col2 = st.columns([3, 1])
 
 with col1:
