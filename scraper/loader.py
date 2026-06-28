@@ -4,10 +4,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
 def scrape_website(url):
-    """
-    Scrape a single webpage using LangChain WebBaseLoader.
-    Returns a list of documents with page content and metadata.
-    """
     print(f"Scraping URL: {url}")
 
     try:
@@ -29,9 +25,6 @@ def scrape_website(url):
 
 
 def split_documents(documents):
-    """
-    Split scraped documents into smaller chunks for embedding.
-    """
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
         chunk_overlap=50
@@ -43,10 +36,6 @@ def split_documents(documents):
 
 
 def validate_url(url):
-    """
-    Check if a URL is accessible before scraping.
-    Returns True if accessible, False otherwise.
-    """
     try:
         response = requests.head(url, timeout=10, allow_redirects=True)
         return response.status_code < 400
