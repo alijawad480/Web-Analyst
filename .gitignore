@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+vectorstore/
+database/website_analyst.db
+.venv/
+venv/
