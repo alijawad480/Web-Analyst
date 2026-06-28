@@ -49,10 +49,7 @@ class ChatRequest(BaseModel):
 
 # Helper
 def get_or_create_workflow(url):
-    """
-    Get workflow from cache or create a new one.
-    Each URL has its own workflow with its own vectorstore.
-    """
+    
     if url not in workflow_cache:
         vectorstore = load_vectorstore(url)
         if vectorstore is None:
@@ -84,10 +81,6 @@ def new_session():
 
 @app.post("/analyze")
 def analyze_url(request: AnalyzeRequest):
-    """
-    Scrape a URL and index its content into ChromaDB.
-    If URL was already indexed, just load it from disk.
-    """
     url = request.url.strip()
 
     if not url.startswith("http"):
@@ -217,6 +210,6 @@ def get_urls(session_id: str):
 
 @app.get("/sessions")
 def get_sessions():
-    """Get all sessions"""
+# Get all sessions
     sessions = get_all_sessions()
     return {"total_sessions": len(sessions), "sessions": sessions}
